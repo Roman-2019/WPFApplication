@@ -27,6 +27,11 @@ namespace WPFApplicationCommon.Views
             this.DataContext = PhoneModel;
         }
 
+        private void TextBox_Error(object sender, ValidationErrorEventArgs e)
+        {
+            MessageBox.Show(e.Error.ErrorContent.ToString());
+        }
+
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;

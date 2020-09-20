@@ -76,8 +76,8 @@ namespace WPFApplicationCommon.Views
 
         private void Search_Click(object sender, RoutedEventArgs e) 
         {
-            db = new MobileContext();
-            db.Phones.Load();
+            //db = new MobileContext();
+            //db.Phones.Load();
 
             if (cmbCategory.SelectedIndex != 2)
             {

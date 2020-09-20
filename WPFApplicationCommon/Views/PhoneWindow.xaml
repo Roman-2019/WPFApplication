@@ -31,7 +31,15 @@
 
         <TextBox Text="{Binding Title}" Grid.Column="1" />
         <TextBox Text="{Binding Category}" Grid.Column="1" Grid.Row="1" />
-        <TextBox Text="{Binding Price}" Grid.Column="1" Grid.Row="2" />
+        <TextBox  Grid.Column="1" Grid.Row="2" Validation.Error="TextBox_Error">
+            <TextBox.Text>
+                <Binding Path="Price" NotifyOnValidationError="True">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="3" Grid.Column="1" Margin="276,0,276,10">
             <Button IsDefault="True" Click="Accept_Click" MinWidth="60" Margin="5">OK</Button>

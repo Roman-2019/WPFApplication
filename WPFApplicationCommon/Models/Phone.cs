@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WPFApplicationCommon.Models
 {
-    public class Phone : INotifyPropertyChanged
+    public class Phone : INotifyPropertyChanged, IDataErrorInfo
     {
         private string title;
         private string category;
@@ -48,6 +48,32 @@ namespace WPFApplicationCommon.Models
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = String.Empty;
+                switch (columnName)
+                {
+                    case "Price":
+                        if (price < 0) 
+                        {
+                            error = "Цена не может быть меньше 0";
+                        }
+                        break;
+                    case "Title":
+                        break;
+                    case "Category":
+                        break;
+                }
+                return error;
+            }
+        }
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }
